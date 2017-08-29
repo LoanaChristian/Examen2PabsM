@@ -1,21 +1,8 @@
 {
-  "name": "examen2-pabs",
+  "name": "examen2pabsm",
   "version": "1.0.0",
-  "description": "Examen 2 proyecto web",
-  "main": "api/server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andres07cr/Examen2-Pabs.git"
-  },
-  "author": "Andres Vega",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/andres07cr/Examen2-Pabs/issues"
-  },
-  "homepage": "https://github.com/andres07cr/Examen2-Pabs#readme",
+  "description": "examen 2 con backend",
+  "main": "./api/server.js",
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "^1.13.3",
@@ -23,10 +10,27 @@
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
     "gulp-nodemon": "^2.2.1",
+    "moment": "^2.18.1",
     "mongoose": "^4.11.5",
     "morgan": "~1.5.0",
     "nib": "^1.1.2",
+    "nodemailer": "^4.0.1",
     "passport": "^0.3.2",
-    "passport-jwt": "^1.2.1"
-  }
+    "passport-jwt": "^1.2.1",
+    "smdatetimerangepicker": "^2.0.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoanaChristian/Examen2PabsM.git"
+  },
+  "author": "loana christian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LoanaChristian/Examen2PabsM/issues"
+  },
+  "homepage": "https://github.com/LoanaChristian/Examen2PabsM#readme"
 }
