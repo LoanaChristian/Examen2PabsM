@@ -1,7 +1,7 @@
 //Requerimos mongoose
 var mongoose = require('mongoose');
 //Esquema de usuarios
-var UserSchema = new mongoose.Schema({
+var PlayerSchema = new mongoose.Schema({
   code:String,
   name: String,
   alias: String,
