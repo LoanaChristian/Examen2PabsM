@@ -1,0 +1,30 @@
+<div ng-controller="userController as ctrl" class="col-md-12">
+          <br><br>
+          <form class="col-md-3" action="" class="search-form">
+            <div class="form-group has-feedback">
+              <label for="Buscar" class="sr-only">Buscar</label>
+              <input type="text" class="form-control" name="nameFilter" ng-model="ctrl.nameFilter" placeholder="Buscar...">
+              <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+          </form>
+          <div class="clearfix"></div>
+          <!--inicio de los cards -->
+            <md-card class="container-fluid col-md-12" ng-repeat="property in ctrl.propertys | filter:ctrl.nameFilter">
+              <md-card-header>
+                <md-card-header-text>
+                  <span class="md-title">Nombre de la propiedad: {{property.name}}</span>
+                  <span class="md-subhead">Precio: {{property.price}}</span>
+                </md-card-header-text>
+              </md-card-header>
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-subhead">Renta: {{property.rent}}</span>
+                  <span class="md-subhead">Costo de casa: {{property.housecost}}</span>
+                  <span class="md-subhead">Grupo: {{property.group}}</span>
+                  <span class="md-subhead">Dueño: {{property.ownedby}}</span>
+                  <span class="md-subhead">Cantidad de Edificios: {{property.buildings}}</span>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-actions id="buttons">
+              <md-card-icon-actions>
+          </div>
