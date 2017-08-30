@@ -6,23 +6,22 @@
           <div class="col-sm-6">
             <div class="form-group label-floating">
               <label class="control-label">Jugador</label>
-              <select  class="form-control" ng-model="vm.player" required>
+              <select  class="form-control" ng-model="ctrl.player" required>
                 <option  disabled="" selected=""></option>
-                <option ng-repeat="jugadores in vm.players track by $index" value="{{jugadores.name}}">{{jugadores.name}}</option>
+                <option ng-repeat="jugadores in ctrl.players track by $index" value="{{jugadores.name}}">{{jugadores.name}}</option>
                </select>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group label-floating">
               <label class="control-label">Propiedad</label>
-              <select  class="form-control" ng-model="vm.property" required>
+              <select  class="form-control" ng-model="ctrl.property" required>
                 <option  disabled="" selected=""></option>
-                <option ng-repeat="propiedades in vm.propertys" value="{{propiedades.name}}">{{propiedades.name}}</option>
+                <option ng-repeat="propiedades in ctrl.propertys" value="{{propiedades.name}}">{{propiedades.name}}</option>
                </select>
             </div>
           </div>
         </div>
-		<button class="btn btn-default pull-right" ng-click="vm.SaveTwo()" ng-disabled="RegProperty.$invalid">Comprar</button>
+		<button class="btn btn-default pull-right" ng-click="ctrl.SaveTwo()" ng-disabled="RegProperty.$invalid">Comprar</button>
 	</form>
 </section>
-<script src="form.js"></script>
