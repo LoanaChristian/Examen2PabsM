@@ -28,5 +28,9 @@ router.route('/update_user')
   .put(function(req, res){
     userController.update(req,res);
  	});
+
+
+
+
 // Se exporta el modulo
 module.exports = router;
