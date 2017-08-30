@@ -4,37 +4,7 @@
     .module('myApp')
     .service('userService', userService);
 
-  function userService() {
-    var players = [
-    {code: '001',
-    name:'Quijote de la Mancha',
-    alias: 'quixote',
-    money: 2500,
-    property:[],
-  },
-     {
-    code: '002',
-    name:'Sancho Panza',
-    alias: 'sanc_panza',
-    money: 1700,
-    property:[],
-  },
-  {
-    code: '003',
-    name:'Harry Potter',
-    alias: 'Against_voldy',
-    money: 1000,
-    property:[],
-  },
-  {
-    code: '004',
-    name:'Severus Snape',
-    alias: 'Always',
-    money: 2700,
-    property:[],
-  },
-    ];
-
+  function userService($http) {
     var propiedades = [
     {
       name: "Mediterranean Avenue",
@@ -758,10 +728,7 @@
     return publicAPI;
 
     function _setUsers(pnewPlayer) {
-      var list = _getUsers();
-
-      list.push(pnewPlayer);
-      localStorage.setItem('lsPlayers', JSON.stringify(list));
+      return $http.post('http://localhost:3000/api/users',pnewPlayer);
     }
 
     function _getProperty(){
@@ -784,8 +751,8 @@
       return validate;
     }
 
-    function _check(pnewPlayer){
-      var list = _getUsers();
+    function _check(pnewPlayer,players){
+      var list = players;
       var validate = false
       for(var i = 0; i < list.length; i++){
         if (pnewPlayer.code == list[i].code) {
@@ -795,27 +762,32 @@
       return validate;
     }
 
-    function _update(pBuy,pPrice){
-      var list = _getUsers();
+    function _update(pBuy,pPrice,Players){
+      var list = Players;
       for( var i = 0; i < list.length; i++){
         if (pBuy.player === list[i].name) {
           var info = list[i];
           var newPlayer = {
+            _id: info._id,
             code: info.code,
             name: info.name,
             alias: info.alias,
             money: info.money - pPrice,
             photo: info.photo,
-            property: info.property
+            property: info.property + ' ' + pBuy.property + ', '
           }
-          newPlayer.property.push(pBuy.property)
-          list[i] = newPlayer;
+          // newPlayer.property.push(pBuy.property)
+          // list[i] = newPlayer;
         }
       }
-      localStorage.setItem('lsPlayers', JSON.stringify(list));
+      modificarUser(newPlayer);
     }
 
-    function _buy(pBuy){
+    function modificarUser(pobjUser) {
+      return $http.put('http://localhost:3000/api/update_user',pobjUser);
+    }
+
+    function _buy(pBuy,Players){
       var list = _getProperty();
       var price = 0;
       for(var i = 0; i < list.length; i++){
@@ -825,15 +797,11 @@
         }
         localStorage.setItem('lsProperty', JSON.stringify(list));
       }
-      _update(pBuy,price);
+      _update(pBuy,price,Players);
     }
 
     function _getUsers() {
-      var list = JSON.parse(localStorage.getItem('lsPlayers'));
-      if (list == null) {
-        list = players;
-      }
-      return list;
+      return $http.get('http://localhost:3000/api/users');
     }
   }
 
